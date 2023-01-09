@@ -129,7 +129,19 @@ class productController extends Controller
             [
                 "message" => "Product deleted",
                 "delete"=>$productCopy
+                
             ],
        200 );
+    }
+
+    public function find(Request $request){
+        //
+        $products = Product::all()->where('name',$request->name)
+                                  ->where('id',2);
+       
+        return response()->json([
+            "message" => "Product liste",
+            "data" => $products
+        ],200);
     }
 }
